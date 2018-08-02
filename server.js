@@ -15,9 +15,9 @@ app.use(function(req, res, next) {
 });
 
 io.on('connection', function(socket){
-  // socket.on('chat', (message) => {
-  //   io.sockets.emit('chat', message);
-  // });
+  socket.on('chat', (message) => {
+    io.sockets.emit('chat', message);
+  });
 });
 
 const server = http.listen(port, () => {

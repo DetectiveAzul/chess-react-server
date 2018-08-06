@@ -29,7 +29,7 @@ io.on('connection', function(socket){
   });
 
   socket.on('chess-moved', (chessObject) => {
-    io.sockets.emit(`chess-received-${chessObject.id}`, chessObject.fen);
+    io.sockets.emit(`chess-received-${chessObject.id}`, chessObject);
   });
 
 

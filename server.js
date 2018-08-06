@@ -28,8 +28,8 @@ io.on('connection', function(socket){
     io.sockets.emit('chat', message);
   });
 
-  socket.on('chess-moved', (newPos) => {
-    io.sockets.emit('chess-received', newPos);
+  socket.on('chess-moved', (chessObject) => {
+    io.sockets.emit(`chess-received-${chessObject.id}`, chessObject.fen);
   });
 
 

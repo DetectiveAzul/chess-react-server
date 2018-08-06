@@ -32,6 +32,10 @@ io.on('connection', function(socket){
     io.sockets.emit(`chess-received-${chessObject.id}`, chessObject);
   });
 
+  socket.on('game-finished', (id) => {
+    console.log(`Game ID ${id} has been finished`);
+  });
+
 
 });
 

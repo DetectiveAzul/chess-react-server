@@ -21,7 +21,7 @@ const playersRouter = function(playersCollection) {
   });
 
   router.post('/', (req, res) => {
-    const newGame = req.body.gameData;
+    const newGame = req.body.playerData;
     playersCollection
       .insert(newGame)
       .then( () => {
@@ -34,7 +34,7 @@ const playersRouter = function(playersCollection) {
 
   router.put('/:id', (req, res) => {
     const id = req.params.id;
-    const updatedGame = req.body.gameData;
+    const updatedGame = req.body.playerData;
     playersCollection
       .updateOne(
         { _id: ObjectID(id)},

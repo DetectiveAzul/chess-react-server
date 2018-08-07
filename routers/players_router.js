@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const ObjectID = require('mongodb').ObjectID;
 
-const gamesRouter = function(gamesCollection) {
+const playersRouter = function(playersCollection) {
   //index
   router.get('/', (req, res) => {
-    gamesCollection
+    playersCollection
       .find()
       .toArray()
       .then( (docs) => res.json(docs))
@@ -14,7 +14,7 @@ const gamesRouter = function(gamesCollection) {
   //show
   router.get('/:id', (req, res) => {
     const id = req.params.id;
-    gamesCollection
+    playersCollection
       .find({ _id: ObjectID(id)})
       .toArray()
       .then( (docs) => res.json(docs))
@@ -22,10 +22,10 @@ const gamesRouter = function(gamesCollection) {
 
   router.post('/', (req, res) => {
     const newGame = req.body.gameData;
-    gamesCollection
+    playersCollection
       .insert(newGame)
       .then( () => {
-        gamesCollection
+        playersCollection
           .find()
           .toArray()
           .then( (docs) => res.json(docs))
@@ -35,14 +35,14 @@ const gamesRouter = function(gamesCollection) {
   router.put('/:id', (req, res) => {
     const id = req.params.id;
     const updatedGame = req.body.gameData;
-    gamesCollection
+    playersCollection
       .updateOne(
         { _id: ObjectID(id)},
         { $set: updatedGame },
         { upsert: true }
       )
       .then( () => {
-        gamesCollection
+        playersCollection
           .find({ _id: ObjectID(id)})
           .toArray()
           .then( (docs) => res.json(docs))
@@ -50,10 +50,10 @@ const gamesRouter = function(gamesCollection) {
   });
 
   router.delete('/all', (req, res) => {
-    gamesCollection
+    playersCollection
       .deleteMany({})
       .then( () => {
-        gamesCollection
+        playersCollection
           .find()
           .toArray()
           .then( (docs) => res.json(docs))
@@ -62,10 +62,10 @@ const gamesRouter = function(gamesCollection) {
 
   router.delete('/:id', (req, res) => {
     const id = req.params.id;
-    gamesCollection
+    playersCollection
       .deleteOne({ _id: ObjectID(id)})
       .then( () => {
-        gamesCollection
+        playersCollection
           .find()
           .toArray()
           .then( (docs) => res.json(docs))
@@ -76,4 +76,4 @@ const gamesRouter = function(gamesCollection) {
 };
 
 
-module.exports = gamesRouter ;
+module.exports = playersRouter ;

@@ -31,12 +31,11 @@ const playersRouter = function(playersCollection) {
         });
   });
 
-  router.put('/:id', (req, res) => {
-    const id = req.params.id;
-    const updatedGame = req.body.playerData;
+  router.put('/:account', (req, res) => {
+    const updatedPlayer = req.body.playerData;
     playersCollection
       .updateOne(
-        { _id: ObjectID(id)},
+        { account: req.params.account},
         { $set: updatedGame },
         { upsert: true }
       )
@@ -59,10 +58,9 @@ const playersRouter = function(playersCollection) {
         });
   });
 
-  router.delete('/:id', (req, res) => {
-    const id = req.params.id;
+  router.delete('/:account', (req, res) => {
     playersCollection
-      .deleteOne({ _id: ObjectID(id)})
+      .deleteOne({ account: req.params.account})
       .then( () => {
         playersCollection
           .find()

@@ -12,10 +12,9 @@ const playersRouter = function(playersCollection) {
   });
 
   //show
-  router.get('/:id', (req, res) => {
-    const id = req.params.id;
+  router.get('/:account', (req, res) => {
     playersCollection
-      .find({ _id: ObjectID(id)})
+      .find({ account: req.params.account})
       .toArray()
       .then( (docs) => res.json(docs))
   });

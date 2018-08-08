@@ -28,6 +28,10 @@ io.on('connection', function(socket){
     io.sockets.emit(`chat-${message.id}`, message);
   });
 
+  socket.on('system', (message) => {
+    io.sockets.emit(`system-${message.id}`, message);
+  });
+
   socket.on('chess-moved', (chessObject) => {
     io.sockets.emit(`chess-received-${chessObject.id}`, chessObject);
   });

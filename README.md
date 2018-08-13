@@ -45,3 +45,6 @@ To install a local version of xChess you need first to have installed NPM and Mo
 
 ## Run
 * Open Google Chrome and go to `http://localhost:3000`
+
+## About playing against Humans
+* Lobby only loads the list of games when mounting the components and when deleting games, so if you don't see your friends game, just reload the page. 

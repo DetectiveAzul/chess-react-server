@@ -46,5 +46,8 @@ To install a local version of xChess you need first to have installed NPM and Mo
 ## Run
 * Open Google Chrome and go to `http://localhost:3000`
 
+## About playing against AI
+* Just set up [AI] to true before moving a white piece. AI only plays with Black side, and its moved are triggered as soons as you drop your piece to a legal move. You can UNDO movements and train with it on the three difficulty levels. 
+
 ## About playing against Humans
 * Lobby only loads the list of games when mounting the components and when deleting games, so if you don't see your friends game, just reload the page. 
